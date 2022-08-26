@@ -8,7 +8,6 @@ import Cards from "../components/Cards";
 import { useEffect, useState } from "react";
 
 const Home: NextPage = (props) => {
-  console.log(props.data);
 
   return (
     <div>
