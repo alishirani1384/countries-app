@@ -5,10 +5,16 @@ import SelectRg from "../components/SelectRg";
 import Cards from "../components/Cards";
 import { NextPage } from "next";
 import axios from "axios";
+import { useState } from "react";
 
 const Home: NextPage = ({ countries }: any) => {
-  console.log(countries);
+  const [countryName, setCountryName] = useState();
+  const callback = (name:any) => {
+    setCountryName(name)
+  };
 
+  console.log(countryName);
+  
   return (
     <div>
       <Head>
@@ -17,7 +23,7 @@ const Home: NextPage = ({ countries }: any) => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <div className="container mx-auto mt-10 max-w-sm md:max-w-screen-md lg:max-w-screen-lg flex flex-col items-center justify-between md:flex-row space-y-5 md:space-y-0 md:justify-between xl:max-w-screen-xl">
-        <Search />
+        <Search onSubmit={callback} />
         <SelectRg />
       </div>
       <Cards countries={countries} />

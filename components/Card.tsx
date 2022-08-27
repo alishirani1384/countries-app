@@ -15,7 +15,7 @@ const Card = ({ flag, name, region, population, capital, code }: card) => {
   const router = useRouter();
   return (
     <div
-      className="w-64 flex flex-col shadow-lg rounded-lg cursor-pointer"
+      className="w-64 flex flex-col shadow-lg bg-white dark:bg-[#2b3945] rounded-lg cursor-pointer dark:text-white"
       onClick={() => router.push(`${code}`)}>
       <Image
         src={flag}
@@ -24,7 +24,7 @@ const Card = ({ flag, name, region, population, capital, code }: card) => {
         className="rounded-t-lg"
         alt={name}
       />
-      <div className="bg-white rounded-lg p-3 space-y-2">
+      <div className="bg-white dark:bg-[#2b3945] rounded-lg p-3 space-y-2">
         <h2 className="text-lg font-bold">{name}</h2>
         <p className="text-sm font-bold">
           Population: <span className="font-light">{population}</span>

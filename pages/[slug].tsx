@@ -8,25 +8,25 @@ const CountryPage = ({ countryInfo }: any) => {
   const country = countryInfo[0];
   const router = useRouter();
   return (
-    <div className="mt-5">
+    <div className="mt-5 dark:text-white">
       <button
         onClick={() => router.back()}
-        className="bg-white shadow-xl rounded-lg text-lg w-24 h-10 p-2 flex items-center justify-between">
+        className="bg-white dark:bg-[#2b3945] dark:text-white shadow-xl rounded-lg text-lg w-24 h-10 p-2 flex items-center justify-between">
         <BackIcon />
         back
       </button>
-      <div className="space-y-5">
-        <div className="mt-3 max-w-md shadow-lg">
+      <div className="space-y-5 md:grid md:grid-cols-2 md:items-center md:place-items-center">
+        <div className="mt-3 max-w-md">
           <Image
             src={country.flags.svg}
-            width="100%"
-            height="100%"
-            layout="responsive"
+            width='500'
+            height='500'
             alt={country.name.common}
             className="shadow-lg"
           />
         </div>
-        <h2 className="text-xl font-bold">{country.name.common}</h2>
+        <div className="space-y-4">
+          <h2 className="text-xl font-bold">{country.name.common}</h2>
         <p className="text-sm font-bold">
           Native name:{" "}
           <span className="font-light">{country.name.official}</span>
@@ -43,6 +43,8 @@ const CountryPage = ({ countryInfo }: any) => {
         <p className="text-sm font-bold">
           Capital: <span className="font-light">{country.capital}</span>
         </p>
+        </div>
+        
       </div>
     </div>
   );
