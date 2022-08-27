@@ -26,7 +26,7 @@ const Home: NextPage = ({ countries }: any) => {
         <Search onSubmit={callback} />
         <SelectRg />
       </div>
-      <Cards countries={countries} />
+      <Cards countries={countries} countryName={countryName} />
     </div>
   );
 };
