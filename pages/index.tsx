@@ -7,10 +7,10 @@ import { NextPage } from "next";
 import axios from "axios";
 import { useState } from "react";
 
-const Home: NextPage = ({ countries }: any) => {
-  const [countryName, setCountryName] = useState();
-  const callback = (name:any) => {
-    setCountryName(name)
+const Home: NextPage = ({ countries }:any) => {
+  const [countryName, setCountryName] = useState<null|string>();
+  const callback: (name: string) => void = (name: string) => {
+    setCountryName(name);
   };
 
   console.log(countryName);

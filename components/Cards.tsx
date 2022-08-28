@@ -1,12 +1,15 @@
 import React from "react";
 import Card from "./Card";
 
+interface CardProps{
+  countries: any;
+  countryName: string | null|undefined;
+}
 
-
-const Cards = ({ countries, countryName }: any) => {
+const Cards = ({ countries, countryName }:CardProps) => {
   if (countryName) {
     return countries
-      .filter((coun: { name: { common: string; }; }) => coun.name.common.toLowerCase() == countryName)
+      .filter((coun: { name: { common: string; }; }) => coun.name.common.toLowerCase() == countryName.toLowerCase())
       .map((country: { area: React.Key | null | undefined; flags: { svg: string; }; name: { common: string; }; population: number; region: string; capital: string[]; cca2: string; }) => {
         return (
           <div key={country.area} className="grid my-10 grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 place-items-center">
