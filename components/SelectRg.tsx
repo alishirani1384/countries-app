@@ -2,12 +2,21 @@ import React, { useState, Fragment } from "react";
 import { Listbox, Transition } from "@headlessui/react";
 import { FlashDown } from "./Icons";
 
+interface SelectProps {
+  onClick: (regionName: string) => void;
+}
+
 function classNames(...classes: string[]) {
   return classes.filter(Boolean).join(" ");
 }
-const SelectRg = () => {
-  const regions:string[] = ["Africa", "America", "Asia", "Europe", "Oceania"];
-  const [selected, setSelected] = useState<string>('Filter by Region');
+const SelectRg = ({ onClick }: SelectProps) => {
+  const regions: string[] = ["Africa", "America", "Asia", "Europe", "Oceania"];
+  const [selected, setSelected] = useState<string>("Filter by Region");
+  function handleChange(e: any) {
+    setSelected(e.target.value);
+    onClick(selected);
+  }
+  console.log(selected);
 
   return (
     <Listbox value={selected} onChange={setSelected}>
@@ -32,10 +41,13 @@ const SelectRg = () => {
               <Listbox.Options className="absolute z-10 mt-1 w-44 dark:bg-[#2b3945] dark:text-white bg-white shadow-lg max-h-56 rounded-md py-1 text-base ring-1 ring-black ring-opacity-5 overflow-auto focus:outline-none sm:text-sm">
                 {regions.map((region, index) => (
                   <Listbox.Option
+                    onClick={handleChange}
                     key={index}
                     className={({ active }) =>
                       classNames(
-                        active ? "text-white  bg-indigo-600" : "dark:text-white text-gray-900",
+                        active
+                          ? "text-white  bg-indigo-600"
+                          : "dark:text-white text-gray-900",
                         "cursor-default select-none relative py-2 pl-3 pr-9"
                       )
                     }

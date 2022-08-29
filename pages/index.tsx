@@ -9,9 +9,13 @@ import { useState } from "react";
 
 const Home: NextPage = ({ countries }:any) => {
   const [countryName, setCountryName] = useState<null|string>();
-  const callback: (name: string) => void = (name: string) => {
+  const [countryRegion, setCountryRegion] = useState<null|string>();
+  const searchCountry: (name: string) => void = (name: string) => {
     setCountryName(name);
   };
+  const filterRegion: (regionName: string) => void = (regionName: string) => {
+    setCountryRegion(regionName)
+  }
 
   console.log(countryName);
   
@@ -23,10 +27,10 @@ const Home: NextPage = ({ countries }:any) => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <div className="container mx-auto mt-10 max-w-sm md:max-w-screen-md lg:max-w-screen-lg flex flex-col items-center justify-between md:flex-row space-y-5 md:space-y-0 md:justify-between xl:max-w-screen-xl">
-        <Search onSubmit={callback} />
-        <SelectRg />
+        <Search onSubmit={searchCountry} />
+        <SelectRg onClick={filterRegion} />
       </div>
-      <Cards countries={countries} countryName={countryName} />
+      <Cards countries={countries} countryName={countryName} countryRegion={countryRegion} />
     </div>
   );
 };
